@@ -3,7 +3,7 @@
 ;;
 ;; Based on Quentin Hocquet <mefyl at lrde dot epita dot fr> configuration
 ;; > Based on Nicolas Despres <despre_n at lrde dot epita dot fr> configuration
-;; > Thanks go to Micha <micha at lrde dot epita dot fr> for his help
+;; > Thanks go to Michael Cadilhac <micha at lrde dot epita dot fr> for his help
 ;;
 
 (defun may-load (path)
@@ -38,6 +38,9 @@
 
 (defconst emacs22 (string-match "^22." emacs-version)
   "non-nil iff Emacs 22, nil otherwise")
+
+(defconst emacs23 (string-match "^23." emacs-version)
+  "non-nil iff Emacs 23, nil otherwise")
 
 ;; CUSTOM FUNCTIONS
 
@@ -247,8 +250,8 @@
 (setq delete-old-versions t)	   ; delete oldversion file
 (setq make-backup-files nil)	   ; no backupfile
 
-(setq normal-erase-is-backspace-mode t) ; make delete work as it should
-(global-set-key (kbd "<delete>")  'delete-char)
+(if (display-graphic-p)
+    (normal-erase-is-backspace-mode t)) ; make delete work as it should
 
 (fset 'yes-or-no-p 'y-or-n-p)	     ; 'y or n' instead of 'yes or no'
 (setq default-major-mode 'text-mode) ; change default major mode to text
@@ -344,10 +347,10 @@
 ;; GNUSERV
 (when has-gnuserv
   (gnuserv-start)
-					; (global-set-key [(control x) (control c)] 'gnuserv-close-session)
+  ;; (global-set-key [(control x) (control c)] 'gnuserv-close-session)
   (add-hook 'gnuserv-visit-hook 'configure-frame))
 
-					; GNUS
+;; GNUS
 (setq gnus-select-method '(nntp "news.epita.fr")) ;; news server
 (setq user-full-name "my-name")	  ;; set my name
 (setq user-nickname "my-nickname")	  ;; set my nickname
@@ -609,11 +612,11 @@
  '(ido-ignore-buffers (quote ("\\`\\*breakpoints of.*\\*\\'" "\\`\\*stack frames of.*\\*\\'" "\\`\\*gud\\*\\'" "\\`\\*locals of.*\\*\\'" "\\` ")))
  '(ido-mode (quote both) nil (ido))
  '(python-indent 2) ; indentation python
- '(require-final-newline t)
+ '(require-final-newline t) ; Whether to add a newline automatically at the end of the file.
  '(speedbar-frame-parameters (quote ((minibuffer . t) (width . 20) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0)))))
 
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets) ; rename buffers when having same name
 
 (setq-default ispell-program-name "aspell")
 
