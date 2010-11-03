@@ -99,9 +99,9 @@
 
 ;; C/C++
 
-;; Insert header guard in C/C++ header file.
-;; Recognized extensions: .h, .hh or .hxx
 (defun insert-header-guard ()
+  "Insert header guard in C/C++ header file.
+Recognized extensions: .h, .hh or .hxx"
   (interactive)
   (if (string-match "\\.h\\(h\\|xx\\)?\\'" (file-name-nondirectory buffer-file-name))
       (let ((header-guard
@@ -116,9 +116,9 @@
           (insert "\n#endif /* !" header-guard " */\n")))
     (message "Invalid C/C++ header file.")))
 
-;; Insert header inclusion in C/C++ source file.
-;; Recognized extensions: .c, .cc or .cpp
 (defun insert-header-inclusion ()
+  "Insert header inclusion in C/C++ source file.
+Recognized extensions: .c, .cc or .cpp"
   (interactive)
   (if (string-match "\\.c\\(c\\|pp\\)?\\'" (file-name-nondirectory buffer-file-name))
       (let
