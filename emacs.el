@@ -29,30 +29,31 @@
 
 (defconst has-gnuserv
   (fboundp 'gnuserv-start)
-  "Whether gnuserv is available")
+  "Whether gnuserv is available.")
 
 ;; Version detection
 
 (defconst xemacs (string-match "XEmacs" emacs-version)
-  "non-nil iff XEmacs, nil otherwise")
+  "non-nil iff XEmacs, nil otherwise.")
 
 (defconst emacs22 (string-match "^22." emacs-version)
-  "non-nil iff Emacs 22, nil otherwise")
+  "non-nil iff Emacs 22, nil otherwise.")
 
 (defconst emacs23 (string-match "^23." emacs-version)
-  "non-nil iff Emacs 23, nil otherwise")
+  "non-nil iff Emacs 23, nil otherwise.")
 
 ;; CUSTOM FUNCTIONS
 
 ;; Reload conf
 
 (defun reload ()
+  "Reload configuration file."
   (interactive)
   (load-file "~/.emacs"))
 
 ;; Compilation
 (defvar cpu-number 1
-  "Number of parallel processing units on this system")
+  "Number of parallel processing units on this system.")
 
 (setq compile-command "")
 
@@ -66,8 +67,11 @@
 	     (replace-regexp-in-string "\\.cc$" ".hh" file)))))
     (find-file other)))
 
-(defun count-word (start end)
-  (let ((begin (min start end))(end (max start end)))
+(defun count-words (start end)
+  "Return number of words between START and END."
+  (let
+      ((begin (min start end))
+       (end (max start end)))
     (save-excursion
       (goto-char begin)
       (re-search-forward "\\W*")	; skip blank
@@ -80,14 +84,10 @@
   i)
 
 (defun stat-region (start end)
+  "Print number of lines, words and characters in the region."
   (interactive "r")
-  (let
-      ((words (count-word start end))
-       (lines (count-lines start end))
-       (chars (count-matches "." start end)))
-    (message (concat "Lines: " (int-to-string lines)
-		     "  Words: " (int-to-string words)
-		     "  Characters: " (int-to-string chars)))))
+  (message "Region has %d lines, %d words, %d characters."
+	   (count-lines start end) (count-words start end) (- end start)))
 
 (defun ruby-command (cmd &optional output-buffer error-buffer)
   "Like shell-command, but using ruby."
