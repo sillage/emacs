@@ -231,7 +231,7 @@ Recognized extensions: .c, .cc or .cpp"
 
 
 ;; OPTIONS
-(setq inhibit-startup-message t)    ; don't show the GNU splash screen
+(setq inhibit-startup-screen t)	    ; don't show the GNU splash screen
 (setq frame-title-format "%b")	    ; titlebar shows buffer's name
 (global-font-lock-mode 1)	    ; syntax highlighting
 (setq font-lock-maximum-decoration t)   ; max decoration for all modes
@@ -254,20 +254,20 @@ Recognized extensions: .c, .cc or .cpp"
 (if (display-graphic-p)
     (normal-erase-is-backspace-mode 1)) ; make delete work as it should
 
-(fset 'yes-or-no-p 'y-or-n-p)	     ; 'y or n' instead of 'yes or no'
-(setq default-major-mode 'text-mode) ; change default major mode to text
-(setq ring-bell-function 'ignore)    ; turn the alarm totally off
+(fset 'yes-or-no-p 'y-or-n-p)	   ; 'y or n' instead of 'yes or no'
+(setq major-mode 'text-mode)	   ; change default major mode to text
+(setq ring-bell-function 'ignore)  ; turn the alarm totally off
 
 
 ;; FIXME: wanted 99.9% of the time, but can cause your death 0.1% of
 ;; the time =). Todo: save buffer before reverting
 ;;(global-auto-revert-mode t)         ; auto revert modified files
 
-;;(pc-selection-mode)                 ; selection with shift
-(auto-image-file-mode)                ; to see picture in emacs
-;;(dynamic-completion-mode)           ; dynamic completion
-(show-paren-mode 1)		    ; match parenthesis
-(setq-default indent-tabs-mode t)   ; nil == don't use fucking tabs to indent
+;; (pc-selection-mode)		  ; selection with shift
+(auto-image-file-mode)		  ; to see picture in emacs
+;; (dynamic-completion-mode)	  ; dynamic completion
+(show-paren-mode 1)		  ; match parenthesis
+(setq-default indent-tabs-mode t) ; nil == don't use fucking tabs to indent
 
 ;; HOOKS
 
@@ -352,10 +352,10 @@ Recognized extensions: .c, .cc or .cpp"
   (add-hook 'gnuserv-visit-hook 'configure-frame))
 
 ;; GNUS
-(setq gnus-select-method '(nntp "news.epita.fr")) ;; news server
-(setq user-full-name "my-name")	  ;; set my name
-(setq user-nickname "my-nickname")	  ;; set my nickname
-(setq user-mail-address "email@address") ;; set my email address
+(setq gnus-select-method '(nntp "news.epita.fr")) ; news server
+(setq user-full-name "my-name")			  ; set my name
+(setq user-nickname "my-nickname")		  ; set my nickname
+(setq user-mail-address "email@address") ; set my email address
 
 
 ;; BINDINGS
@@ -372,32 +372,32 @@ Recognized extensions: .c, .cc or .cpp"
   (global-set-key [(control b)] 'ido-switch-buffer))
 
 ;; BINDINGS :: isearch
-(global-set-key [(control f)] 'isearch-forward-regexp)	; search regexp
-(global-set-key [(control r)] 'query-replace-regexp)	; replace regexp
+(global-set-key [(control f)] 'isearch-forward-regexp) ; search regexp
+(global-set-key [(control r)] 'query-replace-regexp) ; replace regexp
 (define-key isearch-mode-map
-  [(control n)] 'isearch-repeat-forward)	; next occurence
+  [(control n)] 'isearch-repeat-forward) ; next occurence
 (define-key isearch-mode-map
-  [(control p)] 'isearch-repeat-backward)	; previous occurence
+  [(control p)] 'isearch-repeat-backward) ; previous occurence
 (define-key isearch-mode-map
-  [(control z)] 'isearch-cancel)		; quit and go back to start point
+  [(control z)] 'isearch-cancel)     ; quit and go back to start point
 (define-key isearch-mode-map
-  [(control f)] 'isearch-exit)			; abort
+  [(control f)] 'isearch-exit)		; abort
 (define-key isearch-mode-map
-  [(control r)] 'isearch-query-replace)		; switch to replace mode
+  [(control r)] 'isearch-query-replace)	; switch to replace mode
 (define-key isearch-mode-map
-  [S-insert] 'isearch-yank-kill)		; paste
+  [S-insert] 'isearch-yank-kill)	; paste
 (define-key isearch-mode-map
-  [(control e)] 'isearch-toggle-regexp)		; toggle regexp
+  [(control e)] 'isearch-toggle-regexp)	; toggle regexp
 (define-key isearch-mode-map
-  [(control l)] 'isearch-yank-line)		; yank line from buffer
+  [(control l)] 'isearch-yank-line)	; yank line from buffer
 (define-key isearch-mode-map
-  [(control w)] 'isearch-yank-word)		; yank word from buffer
+  [(control w)] 'isearch-yank-word)	; yank word from buffer
 (define-key isearch-mode-map
-  [(control c)] 'isearch-yank-char)		; yank char from buffer
+  [(control c)] 'isearch-yank-char)	; yank char from buffer
 
 ;; BINDINGS :: Lisp
 (define-key lisp-mode-map
-  [(control c) (control f)] 'insert-fixme)	; insert fixme
+  [(control c) (control f)] 'insert-fixme) ; insert fixme
 
 ;; ;; BINDINGS :: Ruby
 ;; (define-key ruby-mode-map
@@ -455,29 +455,29 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key [(meta =)] 'stat-region)
 
 (if (display-graphic-p)
-    (global-set-key [(control z)] 'undo))	; undo only in graphic mode
-(global-set-key [(control a)] 'mark-whole-buffer)	; select whole buffer
-(global-set-key [(control return)] 'dabbrev-expand)	; auto completion
-(global-set-key [C-home] 'beginning-of-buffer)	; go to the beginning of buffer
-(global-set-key [C-end] 'end-of-buffer)		; go to the end of buffer
-(global-set-key [(meta g)] 'goto-line)		; goto line #
-(global-set-key [M-left] 'windmove-left)	; move to left windnow
-(global-set-key [M-right] 'windmove-right)	; move to right window
-(global-set-key [M-up] 'windmove-up)		; move to upper window
-(global-set-key [M-down] 'windmove-down)	; move to lower window
+    (global-set-key [(control z)] 'undo)) ; undo only in graphic mode
+(global-set-key [(control a)] 'mark-whole-buffer) ; select whole buffer
+(global-set-key [(control return)] 'dabbrev-expand) ; auto completion
+(global-set-key [C-home] 'beginning-of-buffer) ; go to the beginning of buffer
+(global-set-key [C-end] 'end-of-buffer)	   ; go to the end of buffer
+(global-set-key [(meta g)] 'goto-line)	   ; goto line #
+(global-set-key [M-left] 'windmove-left)   ; move to left windnow
+(global-set-key [M-right] 'windmove-right) ; move to right window
+(global-set-key [M-up] 'windmove-up)	   ; move to upper window
+(global-set-key [M-down] 'windmove-down)   ; move to lower window
 (global-set-key [(control c) (c)] 'recompile)
 (global-set-key [(control c) (e)] 'next-error)
-(global-set-key [(control tab)] 'other-window)		; Ctrl-Tab = Next buffer
+(global-set-key [(control tab)] 'other-window) ; Ctrl-Tab = Next buffer
 (global-set-key
  [C-S-iso-lefttab]
  '(lambda () (interactive)
-    (other-window -1)))	; Ctrl-Shift-Tab = Previous buffer
+    (other-window -1)))		    ; Ctrl-Shift-Tab = Previous buffer
 (global-set-key
  [(control delete)]
- 'kill-word)		; kill word forward
+ 'kill-word)				; kill word forward
 (global-set-key
  [(meta ~)]
- 'ruby-command)		; run ruby command
+ 'ruby-command)				; run ruby command
 
 
 ;; COLORS
