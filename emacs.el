@@ -233,17 +233,18 @@
 ;; OPTIONS
 (setq inhibit-startup-message t)    ; don't show the GNU splash screen
 (setq frame-title-format "%b")	    ; titlebar shows buffer's name
-(global-font-lock-mode t)	    ; syntax highlighting
+(global-font-lock-mode 1)	    ; syntax highlighting
 (setq font-lock-maximum-decoration t)   ; max decoration for all modes
-;;(setq transient-mark-mode 't)          ; highlight selection
-(setq line-number-mode 't)              ; line number
-(setq column-number-mode 't)            ; column number
+;; (transient-mark-mode 1)			; highlight selection
+(size-indication-mode 1)		; buffer's size
+(line-number-mode 1)			; line number
+(column-number-mode 1)			; column number
 (when (display-graphic-p)
   (progn
     (scroll-bar-mode -1)                ; no scroll bar
     (menu-bar-mode 1)                   ; menu bar
     (tool-bar-mode -1)                  ; no tool bar
-    (mouse-wheel-mode t)))              ; enable mouse wheel
+    (mouse-wheel-mode 1)))              ; enable mouse wheel
 (setq scroll-step 1)		        ; smooth scrolling
 
 (setq delete-auto-save-files t)	   ; delete unnecessary autosave files
@@ -251,7 +252,7 @@
 (setq make-backup-files nil)	   ; no backupfile
 
 (if (display-graphic-p)
-    (normal-erase-is-backspace-mode t)) ; make delete work as it should
+    (normal-erase-is-backspace-mode 1)) ; make delete work as it should
 
 (fset 'yes-or-no-p 'y-or-n-p)	     ; 'y or n' instead of 'yes or no'
 (setq default-major-mode 'text-mode) ; change default major mode to text
@@ -265,7 +266,7 @@
 ;;(pc-selection-mode)                 ; selection with shift
 (auto-image-file-mode)                ; to see picture in emacs
 ;;(dynamic-completion-mode)           ; dynamic completion
-(show-paren-mode t)		    ; match parenthesis
+(show-paren-mode 1)		    ; match parenthesis
 (setq-default indent-tabs-mode t)   ; nil == don't use fucking tabs to indent
 
 ;; HOOKS
@@ -333,8 +334,8 @@
 (defconst has-ido emacs22)
 
 (when has-ido
-  (ido-mode t)
-  (ido-everywhere t)
+  (ido-mode 1)
+  (ido-everywhere 1)
   ;; tab means tab, i.e. complete. Not "open this file", stupid.
   (setq ido-confirm-unique-completion t)
   ;; If the file doesn't exist, do try to invent one from a transplanar
