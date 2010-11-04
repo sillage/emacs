@@ -255,12 +255,12 @@ Recognized extensions: .c, .cc or .cpp"
     (normal-erase-is-backspace-mode 1)) ; make delete work as it should
 
 (fset 'yes-or-no-p 'y-or-n-p)	   ; 'y or n' instead of 'yes or no'
-(setq major-mode 'text-mode)	   ; change default major mode to text
+(setq-default major-mode 'text-mode) ; change default major mode to text
 (setq ring-bell-function 'ignore)  ; turn the alarm totally off
 
 
 ;; FIXME: wanted 99.9% of the time, but can cause your death 0.1% of
-;; the time =). Todo: save buffer before reverting
+;; the time =). TODO: save buffer before reverting
 ;;(global-auto-revert-mode t)         ; auto revert modified files
 
 ;; (pc-selection-mode)		  ; selection with shift
@@ -278,9 +278,9 @@ Recognized extensions: .c, .cc or .cpp"
 ;; Show trailing whitespace
 (setq-default show-trailing-whitespace t)
 
-;; ;; Highlight when > 80 cols
-;; ;; Useless with emacs23+ (whitespace-mode)
 ;; (defun eightycols nil
+;;   "Highlight when > 80 cols.
+;; Useless with emacs23+ (whitespace-mode)"
 ;;   (defface line-overflow
 ;;     '((t (:background "red" :foreground "black")))
 ;;     "Face to use for `hl-line-face'.")
