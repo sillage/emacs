@@ -36,10 +36,10 @@
 (defconst xemacs (string-match "XEmacs" emacs-version)
   "non-nil iff XEmacs, nil otherwise.")
 
-(defconst emacs22 (string-match "^22." emacs-version)
+(defconst emacs22 (= 22 emacs-major-version)
   "non-nil iff Emacs 22, nil otherwise.")
 
-(defconst emacs23 (string-match "^23." emacs-version)
+(defconst emacs23 (= 23 emacs-major-version)
   "non-nil iff Emacs 23, nil otherwise.")
 
 ;; CUSTOM FUNCTIONS
@@ -254,9 +254,9 @@ Recognized extensions: .c, .cc or .cpp"
 (if (display-graphic-p)
     (normal-erase-is-backspace-mode 1)) ; make delete work as it should
 
-(fset 'yes-or-no-p 'y-or-n-p)	   ; 'y or n' instead of 'yes or no'
+(defalias 'yes-or-no-p 'y-or-n-p)    ; 'y or n' instead of 'yes or no'
 (setq-default major-mode 'text-mode) ; change default major mode to text
-(setq ring-bell-function 'ignore)  ; turn the alarm totally off
+(setq ring-bell-function 'ignore)    ; turn the alarm totally off
 
 
 ;; FIXME: wanted 99.9% of the time, but can cause your death 0.1% of
@@ -330,8 +330,8 @@ Recognized extensions: .c, .cc or .cpp"
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . change-log-mode))
 
 
-;; Ido
-(defconst has-ido emacs22)
+;; ido --- interactively do things
+(defconst has-ido (>= emacs-major-version 22))
 
 (when has-ido
   (ido-mode 1)
