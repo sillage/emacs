@@ -266,7 +266,7 @@ Recognized extensions: .c, .cc or .cpp"
 (auto-image-file-mode)		  ; to see picture in emacs
 ;; (dynamic-completion-mode)	  ; dynamic completion
 (show-paren-mode 1)		  ; match parenthesis
-(setq-default indent-tabs-mode t) ; nil == don't use fucking tabs to indent
+(setq-default indent-tabs-mode nil) ; nil == don't use fucking tabs to indent
 
 ;; HOOKS
 
