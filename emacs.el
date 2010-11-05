@@ -240,11 +240,10 @@ Recognized extensions: .c, .cc or .cpp"
 (line-number-mode 1)			; line number
 (column-number-mode 1)			; column number
 (when (display-graphic-p)
-  (progn
-    (scroll-bar-mode -1)                ; no scroll bar
-    (menu-bar-mode 1)                   ; menu bar
-    (tool-bar-mode -1)                  ; no tool bar
-    (mouse-wheel-mode 1)))              ; enable mouse wheel
+  (scroll-bar-mode -1)			; no scroll bar
+  (menu-bar-mode 1)			; menu bar
+  (tool-bar-mode -1)			; no tool bar
+  (mouse-wheel-mode 1))			; enable mouse wheel
 (setq scroll-step 1)		        ; smooth scrolling
 
 (setq delete-auto-save-files t)	   ; delete unnecessary autosave files
@@ -333,7 +332,7 @@ Recognized extensions: .c, .cc or .cpp"
 ;; ido --- interactively do things
 (defconst has-ido (>= emacs-major-version 22))
 
-(when has-ido
+(when (featurep 'ido)
   (ido-mode 1)
   (ido-everywhere 1)
   ;; tab means tab, i.e. complete. Not "open this file", stupid.
@@ -368,7 +367,7 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key [(control s) (o)] 'delete-other-windows)
 
 ;; BINDINGS :: ido
-(when has-ido
+(when (featurep 'ido)
   (global-set-key [(control b)] 'ido-switch-buffer))
 
 ;; BINDINGS :: isearch
@@ -590,7 +589,7 @@ Recognized extensions: .c, .cc or .cpp"
 
 
 
-(when has-ido
+(when (featurep 'ido)
   (custom-set-variables
    '(ido-auto-merge-work-directories-length -1)
    '(ido-confirm-unique-completion t)
