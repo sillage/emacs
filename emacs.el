@@ -61,10 +61,10 @@
 (defun c-switch-hh-cc ()
   (interactive)
   (let ((other
-	 (let ((file (buffer-file-name)))
-	   (if (string-match "\\.hh$" file)
-	       (replace-regexp-in-string "\\.hh$" ".cc" file)
-	     (replace-regexp-in-string "\\.cc$" ".hh" file)))))
+         (let ((file (buffer-file-name)))
+           (if (string-match "\\.hh$" file)
+               (replace-regexp-in-string "\\.hh$" ".cc" file)
+             (replace-regexp-in-string "\\.cc$" ".hh" file)))))
     (find-file other)))
 
 (defun count-words (start end)
@@ -74,27 +74,27 @@
        (end (max start end)))
     (save-excursion
       (goto-char begin)
-      (re-search-forward "\\W*")	; skip blank
+      (re-search-forward "\\W*")        ; skip blank
       (setq i 0)
       (while (< (point) end)
-	(re-search-forward "\\w+")
-	(when (<= (point) end)
-	  (setq i (+ 1 i)))
-	(re-search-forward "\\W*"))))
+        (re-search-forward "\\w+")
+        (when (<= (point) end)
+          (setq i (+ 1 i)))
+        (re-search-forward "\\W*"))))
   i)
 
 (defun stat-region (start end)
   "Print number of lines, words and characters in the region."
   (interactive "r")
   (message "Region has %d lines, %d words, %d characters."
-	   (count-lines start end) (count-words start end) (- end start)))
+           (count-lines start end) (count-words start end) (- end start)))
 
 (defun ruby-command (cmd &optional output-buffer error-buffer)
   "Like shell-command, but using ruby."
   (interactive (list (read-from-minibuffer "Ruby command: "
-					   nil nil nil 'ruby-command-history)
-		     current-prefix-arg
-		     shell-command-default-error-buffer))
+                                           nil nil nil 'ruby-command-history)
+                     current-prefix-arg
+                     shell-command-default-error-buffer))
   (shell-command (concat "ruby -e '" cmd "'") output-buffer error-buffer))
 
 ;; C/C++
@@ -106,8 +106,8 @@ Recognized extensions: .h, .hh or .hxx"
   (if (string-match "\\.h\\(h\\|xx\\)?\\'" (file-name-nondirectory buffer-file-name))
       (let ((header-guard
              (concat
-	      (upcase (replace-regexp-in-string "[-.]" "_" (file-name-nondirectory buffer-file-name)))
-	      "_")))
+              (upcase (replace-regexp-in-string "[-.]" "_" (file-name-nondirectory buffer-file-name)))
+              "_")))
         (save-excursion
           (goto-char (point-min))
           (insert "#ifndef " header-guard "\n")
@@ -120,33 +120,38 @@ Recognized extensions: .h, .hh or .hxx"
   "Insert header inclusion in C/C++ source file.
 Recognized extensions: .c, .cc or .cpp"
   (interactive)
-  (if (string-match "\\.c\\(c\\|pp\\)?\\'" (file-name-nondirectory buffer-file-name))
+  (if (string-match "\\.c\\(c\\|pp\\)?\\'"
+                    (file-name-nondirectory buffer-file-name))
       (let
-	  ((header-inclusion (replace-regexp-in-string ".c\\'" ".h"
-			      (replace-regexp-in-string ".c\\(c\\|pp\\)\\'" ".hh"
-							(file-name-nondirectory buffer-file-name)))))
-	(insert "#include \"" header-inclusion "\"\n\n"))
+          ((header-inclusion (replace-regexp-in-string
+                              ".c\\'" ".h"
+                              (replace-regexp-in-string
+                               ".c\\(c\\|pp\\)\\'" ".hh"
+                               (file-name-nondirectory buffer-file-name)))))
+        (insert "#include \"" header-inclusion "\"\n\n"))
     (message "Invalid C/C++ source file.")))
 
 ;; Auto insert C/C++ header guard in empty C/C++ header file.
 ;; Recognized extensions: .h, .hh or .hxx
 (add-hook 'find-file-hook
-	  (lambda ()
-	    (when (and (memq major-mode '(c-mode c++-mode))
-		       (equal (point-min) (point-max))
-		       (string-match "\\.h\\(h\\|xx\\)?\\'" (file-name-nondirectory buffer-file-name)))
-	      (insert-header-guard)
-	      (goto-line 3)
-	      (insert "\n"))))
+          (lambda ()
+            (when (and (memq major-mode '(c-mode c++-mode))
+                       (equal (point-min) (point-max))
+                       (string-match "\\.h\\(h\\|xx\\)?\\'"
+                                     (file-name-nondirectory buffer-file-name)))
+              (insert-header-guard)
+              (goto-line 3)
+              (insert "\n"))))
 
 ;; Auto insert C/C++ header inclusion in empty C/C++ source file.
 ;; Recognized extensions: .c, .cc or .cpp
 (add-hook 'find-file-hook
-	  (lambda ()
-	    (when (and (memq major-mode '(c-mode c++-mode))
-		       (equal (point-min) (point-max))
-		       (string-match "\\.c\\(c\\|pp\\)?\\'" (file-name-nondirectory buffer-file-name)))
-	      (insert-header-inclusion))))
+          (lambda ()
+            (when (and (memq major-mode '(c-mode c++-mode))
+                       (equal (point-min) (point-max))
+                       (string-match "\\.c\\(c\\|pp\\)?\\'"
+                                     (file-name-nondirectory buffer-file-name)))
+              (insert-header-inclusion))))
 
 
 (defun sandbox ()
@@ -176,21 +181,21 @@ Recognized extensions: .c, .cc or .cpp"
   (unless a (setq a ""))
   (if r
       (progn
-	(save-excursion
-	  (goto-char (rbegin))
-	  (beginning-of-line)
-	  (insert "\n")
-	  (line-move -1)
-	  (insert b "{")
-	  (c-indent-line))
-	(save-excursion
-	  (goto-char (- (rend) 1))
-	  (end-of-line)
-	  (insert "\n}" a)
-	  (c-indent-line)
-	  (line-move -1)
-	  (end-of-line))
-	(indent-region (rbegin) (rend)))
+        (save-excursion
+          (goto-char (rbegin))
+          (beginning-of-line)
+          (insert "\n")
+          (line-move -1)
+          (insert b "{")
+          (c-indent-line))
+        (save-excursion
+          (goto-char (- (rend) 1))
+          (end-of-line)
+          (insert "\n}" a)
+          (c-indent-line)
+          (line-move -1)
+          (end-of-line))
+        (indent-region (rbegin) (rend)))
     (progn
       (beginning-of-line)
 
@@ -231,24 +236,24 @@ Recognized extensions: .c, .cc or .cpp"
 
 
 ;; OPTIONS
-(setq inhibit-startup-screen t)	    ; don't show the GNU splash screen
-(setq frame-title-format "%b")	    ; titlebar shows buffer's name
-(global-font-lock-mode 1)	    ; syntax highlighting
+(setq inhibit-startup-screen t)     ; don't show the GNU splash screen
+(setq frame-title-format "%b")      ; titlebar shows buffer's name
+(global-font-lock-mode 1)           ; syntax highlighting
 (setq font-lock-maximum-decoration t)   ; max decoration for all modes
-;; (transient-mark-mode 1)			; highlight selection
-(size-indication-mode 1)		; buffer's size
-(line-number-mode 1)			; line number
-(column-number-mode 1)			; column number
+;; (transient-mark-mode 1)                 ; highlight selection
+(size-indication-mode 1)                ; buffer's size
+(line-number-mode 1)                    ; line number
+(column-number-mode 1)                  ; column number
 (when (display-graphic-p)
-  (scroll-bar-mode -1)			; no scroll bar
-  (menu-bar-mode 1)			; menu bar
-  (tool-bar-mode -1)			; no tool bar
-  (mouse-wheel-mode 1))			; enable mouse wheel
-(setq scroll-step 1)		        ; smooth scrolling
+  (scroll-bar-mode -1)                  ; no scroll bar
+  (menu-bar-mode 1)                     ; menu bar
+  (tool-bar-mode -1)                    ; no tool bar
+  (mouse-wheel-mode 1))                 ; enable mouse wheel
+(setq scroll-step 1)                    ; smooth scrolling
 
-(setq delete-auto-save-files t)	   ; delete unnecessary autosave files
-(setq delete-old-versions t)	   ; delete oldversion file
-(setq make-backup-files nil)	   ; no backupfile
+(setq delete-auto-save-files t)    ; delete unnecessary autosave files
+(setq delete-old-versions t)       ; delete oldversion file
+(setq make-backup-files nil)       ; no backupfile
 
 (if (display-graphic-p)
     (normal-erase-is-backspace-mode 1)) ; make delete work as it should
@@ -262,10 +267,10 @@ Recognized extensions: .c, .cc or .cpp"
 ;; the time =). TODO: save buffer before reverting
 ;;(global-auto-revert-mode t)         ; auto revert modified files
 
-;; (pc-selection-mode)		  ; selection with shift
-(auto-image-file-mode)		  ; to see picture in emacs
-;; (dynamic-completion-mode)	  ; dynamic completion
-(show-paren-mode 1)		  ; match parenthesis
+;; (pc-selection-mode)                     ; selection with shift
+(auto-image-file-mode)                  ; to see picture in emacs
+;; (dynamic-completion-mode)               ; dynamic completion
+(show-paren-mode 1)                 ; match parenthesis
 (setq-default indent-tabs-mode nil) ; nil == don't use fucking tabs to indent
 
 ;; HOOKS
@@ -286,7 +291,7 @@ Recognized extensions: .c, .cc or .cpp"
 ;;   (highlight-regexp "^.\\{80,\\}$" 'line-overflow))
 ;; (add-hook 'find-file-hook 'eightycols)
 
-(custom-set-faces			; red comments
+(custom-set-faces                       ; red comments
  '(font-lock-comment-face ((t (:foreground "dark red")))))
 
 ;; Shebangs
@@ -300,16 +305,16 @@ Recognized extensions: .c, .cc or .cpp"
     (insert-shebang bin)))
 ;; sh
 (add-hook 'sh-mode-hook
-	  (lambda () (insert-shebang-if-empty "/bin/sh")))
+          (lambda () (insert-shebang-if-empty "/bin/sh")))
 ;; Ruby
 (add-hook 'ruby-mode-hook
-	  (lambda () (insert-shebang-if-empty "/usr/bin/ruby")))
+          (lambda () (insert-shebang-if-empty "/usr/bin/ruby")))
 ;; Python
 (add-hook 'python-mode-hook
-	  (lambda () (insert-shebang-if-empty "/usr/bin/python")))
+          (lambda () (insert-shebang-if-empty "/usr/bin/python")))
 ;; Perl
 (add-hook 'perl-mode-hook
-	  (lambda () (insert-shebang-if-empty "/usr/bin/perl")))
+          (lambda () (insert-shebang-if-empty "/usr/bin/perl")))
 
 
 ;; Start code folding mode in C/C++ mode
@@ -352,8 +357,8 @@ Recognized extensions: .c, .cc or .cpp"
 
 ;; GNUS
 (setq gnus-select-method '(nntp "news.epita.fr")) ; news server
-(setq user-full-name "my-name")			  ; set my name
-(setq user-nickname "my-nickname")		  ; set my nickname
+(setq user-full-name "my-name")                   ; set my name
+(setq user-nickname "my-nickname")                ; set my nickname
 (setq user-mail-address "email@address") ; set my email address
 
 
@@ -380,19 +385,19 @@ Recognized extensions: .c, .cc or .cpp"
 (define-key isearch-mode-map
   [(control z)] 'isearch-cancel)     ; quit and go back to start point
 (define-key isearch-mode-map
-  [(control f)] 'isearch-exit)		; abort
+  [(control f)] 'isearch-exit)          ; abort
 (define-key isearch-mode-map
-  [(control r)] 'isearch-query-replace)	; switch to replace mode
+  [(control r)] 'isearch-query-replace) ; switch to replace mode
 (define-key isearch-mode-map
-  [S-insert] 'isearch-yank-kill)	; paste
+  [S-insert] 'isearch-yank-kill)        ; paste
 (define-key isearch-mode-map
-  [(control e)] 'isearch-toggle-regexp)	; toggle regexp
+  [(control e)] 'isearch-toggle-regexp) ; toggle regexp
 (define-key isearch-mode-map
-  [(control l)] 'isearch-yank-line)	; yank line from buffer
+  [(control l)] 'isearch-yank-line)     ; yank line from buffer
 (define-key isearch-mode-map
-  [(control w)] 'isearch-yank-word)	; yank word from buffer
+  [(control w)] 'isearch-yank-word)     ; yank word from buffer
 (define-key isearch-mode-map
-  [(control c)] 'isearch-yank-char)	; yank char from buffer
+  [(control c)] 'isearch-yank-char)     ; yank char from buffer
 
 ;; BINDINGS :: Lisp
 (define-key lisp-mode-map
@@ -400,41 +405,41 @@ Recognized extensions: .c, .cc or .cpp"
 
 ;; ;; BINDINGS :: Ruby
 ;; (define-key ruby-mode-map
-;;   [(control c) (control f)] 'insert-fixme)	; insert fixme
+;;   [(control c) (control f)] 'insert-fixme) ; insert fixme
 
 ;; BINDINGS :: C/C++
 (require 'cc-mode)
 
 (define-key c-mode-base-map
   [(control c) (w)]
-  'c-switch-hh-cc)			; switch between .hh and .cc
+  'c-switch-hh-cc)                      ; switch between .hh and .cc
 (define-key c-mode-base-map
   [(control c) (f)]
-  'hs-hide-block)			; fold code
+  'hs-hide-block)                       ; fold code
 (define-key c-mode-base-map
   [(control c) (s)]
-  'hs-show-block)			; unfold code
+  'hs-show-block)                       ; unfold code
 (define-key c-mode-base-map
   [(control c) (control n)]
-  'c-insert-ns)				; insert namespace
+  'c-insert-ns)                         ; insert namespace
 (define-key c-mode-base-map
   [(control c) (control s)]
-  'c-insert-switch)			; insert switch
+  'c-insert-switch)                     ; insert switch
 (define-key c-mode-base-map
   [(control c) (control i)]
-  'c-insert-if)				; insert if
+  'c-insert-if)                         ; insert if
 (define-key c-mode-base-map
   [(control c) (control b)]
-  'c-insert-braces)			; insert braces
+  'c-insert-braces)                     ; insert braces
 (define-key c-mode-base-map
   [(control c) (control f)]
-  'insert-fixme)			; insert fixme
+  'insert-fixme)                        ; insert fixme
 (define-key c-mode-base-map
   [(control c) (control d)]
-  'c-insert-debug)			; insert C++ debug
+  'c-insert-debug)                      ; insert C++ debug
 (define-key c-mode-base-map
   [(control c) (control l)]
-  'c-insert-class)			; insert class
+  'c-insert-class)                      ; insert class
 
 ;; ;; BINDINGS :: C/C++ :: XRefactory
 ;; (define-key
@@ -458,11 +463,11 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key [(control a)] 'mark-whole-buffer) ; select whole buffer
 (global-set-key [(control return)] 'dabbrev-expand) ; auto completion
 (global-set-key [C-home] 'beginning-of-buffer) ; go to the beginning of buffer
-(global-set-key [C-end] 'end-of-buffer)	   ; go to the end of buffer
-(global-set-key [(meta g)] 'goto-line)	   ; goto line #
+(global-set-key [C-end] 'end-of-buffer)    ; go to the end of buffer
+(global-set-key [(meta g)] 'goto-line)     ; goto line #
 (global-set-key [M-left] 'windmove-left)   ; move to left windnow
 (global-set-key [M-right] 'windmove-right) ; move to right window
-(global-set-key [M-up] 'windmove-up)	   ; move to upper window
+(global-set-key [M-up] 'windmove-up)       ; move to upper window
 (global-set-key [M-down] 'windmove-down)   ; move to lower window
 (global-set-key [(control c) (c)] 'recompile)
 (global-set-key [(control c) (e)] 'next-error)
@@ -470,13 +475,13 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key
  [C-S-iso-lefttab]
  '(lambda () (interactive)
-    (other-window -1)))		    ; Ctrl-Shift-Tab = Previous buffer
+    (other-window -1)))             ; Ctrl-Shift-Tab = Previous buffer
 (global-set-key
  [(control delete)]
- 'kill-word)				; kill word forward
+ 'kill-word)                            ; kill word forward
 (global-set-key
  [(meta ~)]
- 'ruby-command)				; run ruby command
+ 'ruby-command)                         ; run ruby command
 
 
 ;; COLORS
@@ -489,14 +494,14 @@ Recognized extensions: .c, .cc or .cpp"
 
 ;; Qt
 ;; (font-lock-add-keywords 'c++-mode
-;;			'(("foreach\\|rforeach\\|forever\\|emit" . 'font-lock-keyword-face)))
+;;   '(("foreach\\|rforeach\\|forever\\|emit" . 'font-lock-keyword-face)))
 
 ;; Lisp mode
 (require 'lisp-mode)
 (define-key
   lisp-mode-shared-map
   [(control c) (control c)]
-  'comment-region)			; lisp comment
+  'comment-region)                      ; lisp comment
 
 
 ;; C / C++ mode
@@ -508,12 +513,12 @@ Recognized extensions: .c, .cc or .cpp"
     (c-comment-only-line-offset . 0)
     (c-hanging-braces-alist . ((substatement-open before after)))
     (c-offsets-alist . ((topmost-intro        . 0)
-			(substatement         . +)
-			(substatement-open    . 0)
-			(case-label           . +)
-			(access-label         . -)
-			(inclass              . ++)
-			(inline-open          . 0))))
+                        (substatement         . +)
+                        (substatement-open    . 0)
+                        (case-label           . +)
+                        (access-label         . -)
+                        (inclass              . ++)
+                        (inline-open          . 0))))
   "EPITA Coding Style")
 (c-add-style "epita" epita-style)
 ;; Use `EPITA' Coding Style by default.
@@ -524,10 +529,10 @@ Recognized extensions: .c, .cc or .cpp"
 ;;   (interactive)
 ;;   (save-buffer)
 ;;   (setq sh-indent-command (concat
-;; 			   "indent -st -bad --blank-lines-after-procedures "
-;; 			   "-bli0 -i4 -l79 -ncs -npcs -nut -npsl -fca "
-;; 			   "-lc79 -fc1 -cli4 -bap -sob -ci4 -nlp "
-;; 			   buffer-file-name))
+;;                            "indent -st -bad --blank-lines-after-procedures "
+;;                            "-bli0 -i4 -l79 -ncs -npcs -nut -npsl -fca "
+;;                            "-lc79 -fc1 -cli4 -bap -sob -ci4 -nlp "
+;;                            buffer-file-name))
 ;;   (mark-whole-buffer)
 ;;   (universal-argument)
 ;;   (shell-command-on-region
@@ -599,10 +604,10 @@ Recognized extensions: .c, .cc or .cpp"
    '(ido-mode (quote both) nil (ido))))
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(after-save-hook (quote (executable-make-buffer-file-executable-if-script-p)))
  '(gdb-max-frames 1024)
  '(ido-auto-merge-work-directories-length -1)
@@ -611,12 +616,13 @@ Recognized extensions: .c, .cc or .cpp"
  '(ido-everywhere t)
  '(ido-ignore-buffers (quote ("\\`\\*breakpoints of.*\\*\\'" "\\`\\*stack frames of.*\\*\\'" "\\`\\*gud\\*\\'" "\\`\\*locals of.*\\*\\'" "\\` ")))
  '(ido-mode (quote both) nil (ido))
- '(python-indent 2) ; indentation python
+ '(python-indent 2)                     ; indentation python
  '(require-final-newline t) ; Whether to add a newline automatically at the end of the file.
  '(speedbar-frame-parameters (quote ((minibuffer . t) (width . 20) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0)))))
 
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets) ; rename buffers when having same name
+;; rename buffers when having same name
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (setq-default ispell-program-name "aspell")
 
@@ -626,16 +632,18 @@ Recognized extensions: .c, .cc or .cpp"
 
 ;; Recognize test suite output
 (require 'compile)
-(add-to-list 'compilation-error-regexp-alist '("^\\(PASS\\|SKIP\\|XFAIL\\|TFAIL\\): \\(.*\\)$" 2 () () 0 2))
-(add-to-list 'compilation-error-regexp-alist '("^\\(FAIL\\|XPASS\\): \\(.*\\)$" 2 () () 2 2))
+(add-to-list 'compilation-error-regexp-alist
+             '("^\\(PASS\\|SKIP\\|XFAIL\\|TFAIL\\): \\(.*\\)$" 2 () () 0 2))
+(add-to-list 'compilation-error-regexp-alist
+             '("^\\(FAIL\\|XPASS\\): \\(.*\\)$" 2 () () 2 2))
 
-;; (require 'flymake)
-;; (add-hook 'find-file-hook 'flymake-find-file-hook)
+(require 'flymake)
+(add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ;; ;; Xrefactory configuration part ;;
 ;; ;; some Xrefactory defaults can be set here
-;; (defvar xref-current-project nil) ;; can be also "my_project_name"
-;; (defvar xref-key-binding 'global) ;; can be also 'local or 'none
+;; (defvar xref-current-project nil)      ; can be also "my_project_name"
+;; (defvar xref-key-binding 'global)      ; can be also 'local or 'none
 ;; (setq load-path (cons "/tmp/xref/emacs" load-path))
 ;; (setq exec-path (cons "/tmp/xref" exec-path))
 ;; (load "xrefactory")
@@ -708,7 +716,7 @@ Recognized extensions: .c, .cc or .cpp"
 (if (and (boundp 'window-system) window-system)
     (when (string-match "XEmacs" emacs-version)
       (if (not (and (boundp 'mule-x-win-initted) mule-x-win-initted))
-	  (require 'sym-lock))
+          (require 'sym-lock))
       (require 'font-lock)))
 
 
