@@ -713,5 +713,6 @@ Recognized extensions: .c, .cc or .cpp"
 
 
 ;; Height and Width of frame
-(set-frame-height (selected-frame) 42)	; because 42.
-(set-frame-width (selected-frame) 80)
+(when (display-graphic-p)
+  (set-frame-height (selected-frame) 42) ; because 42.
+  (set-frame-width (selected-frame) 80))
