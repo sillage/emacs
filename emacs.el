@@ -460,7 +460,7 @@ Recognized extensions: .c, .cc or .cpp"
 
 (if (display-graphic-p)
     (global-set-key [(control z)] 'undo)) ; undo only in graphic mode
-(global-set-key [(control a)] 'mark-whole-buffer) ; select whole buffer
+;; (global-set-key [(control a)] 'mark-whole-buffer) ; select whole buffer
 (global-set-key [(control return)] 'dabbrev-expand) ; auto completion
 (global-set-key [C-home] 'beginning-of-buffer) ; go to the beginning of buffer
 (global-set-key [C-end] 'end-of-buffer)    ; go to the end of buffer
