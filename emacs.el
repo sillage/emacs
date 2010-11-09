@@ -1,15 +1,17 @@
-;;
-;; emacs configuration
-;;
+;;; emacs.el --- My Emacs config
+
+;;; Commentary:
 ;; Based on Quentin Hocquet <mefyl at lrde dot epita dot fr> configuration
 ;; > Based on Nicolas Despres <despre_n at lrde dot epita dot fr> configuration
 ;; > Thanks go to Michael Cadilhac <micha at lrde dot epita dot fr> for his help
 ;;
 
-(defun may-load (path)
-  "Load a file iff it exists."
-  (when (file-readable-p path)
-    (load-file path)))
+;;; Code:
+
+(defun may-load (file)
+  "Load a FILE iff it exists."
+  (when (file-readable-p file)
+    (load-file file)))
 
 ;; Load local distribution configuration file
 (may-load "~/.emacs.site")
@@ -32,13 +34,13 @@
 ;; Version detection
 
 (defconst xemacs (string-match "XEmacs" emacs-version)
-  "non-nil iff XEmacs, nil otherwise.")
+  "Non-nil iff XEmacs, nil otherwise.")
 
 (defconst emacs22 (= 22 emacs-major-version)
-  "non-nil iff Emacs 22, nil otherwise.")
+  "Non-nil iff Emacs 22, nil otherwise.")
 
 (defconst emacs23 (= 23 emacs-major-version)
-  "non-nil iff Emacs 23, nil otherwise.")
+  "Non-nil iff Emacs 23, nil otherwise.")
 
 ;; CUSTOM FUNCTIONS
 
@@ -517,7 +519,7 @@ Recognized extensions: .c, .cc or .cpp"
                         (access-label         . -)
                         (inclass              . ++)
                         (inline-open          . 0))))
-  "EPITA Coding Style")
+  "EPITA Coding Style.")
 (c-add-style "epita" epita-style)
 ;; Use `EPITA' Coding Style by default.
 (setq c-default-style "epita")
@@ -722,3 +724,5 @@ Recognized extensions: .c, .cc or .cpp"
 (when (display-graphic-p)
   (set-frame-height (selected-frame) 42) ; because 42.
   (set-frame-width (selected-frame) 80))
+
+;;; emacs.el ends here
