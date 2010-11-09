@@ -8,10 +8,10 @@
 
 ;;; Code:
 
-(defun may-load (file)
-  "Load a FILE iff it exists."
-  (when (file-readable-p file)
-    (load-file file)))
+(defun may-load (filename)
+  "Load file FILENAME only if it exists."
+  (when (file-readable-p filename)
+    (load-file filename)))
 
 ;; Load local distribution configuration file
 (may-load "~/.emacs.site")
@@ -34,13 +34,13 @@
 ;; Version detection
 
 (defconst xemacs (string-match "XEmacs" emacs-version)
-  "Non-nil iff XEmacs, nil otherwise.")
+  "Non-nil if XEmacs, nil otherwise.")
 
 (defconst emacs22 (= 22 emacs-major-version)
-  "Non-nil iff Emacs 22, nil otherwise.")
+  "Non-nil if Emacs 22, nil otherwise.")
 
 (defconst emacs23 (= 23 emacs-major-version)
-  "Non-nil iff Emacs 23, nil otherwise.")
+  "Non-nil if Emacs 23, nil otherwise.")
 
 ;; CUSTOM FUNCTIONS
 
