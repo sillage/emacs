@@ -14,10 +14,8 @@
 ;; Load local distribution configuration file
 (may-load "~/.emacs.site")
 
-;; Change the directory to your's
-(defconst conf-dir "~/.emacs.d/"
-  "Location of the configuration files")
-(add-to-list 'load-path conf-dir)
+;; Add location of your configuration files
+(add-to-list 'load-path "~/.emacs.d" 'append)
 
 (require 'my-autoload)
 (require 'my-c-mode)
