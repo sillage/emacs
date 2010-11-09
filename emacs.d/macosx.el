@@ -14,10 +14,9 @@
 
 ;; Option key is meta key on OS X
 ;; Found at http://www.emacswiki.org/emacs/MetaKeyProblems#toc15
-;; cannot use <cmd>+h to hide!!!
 (setq mac-option-key-is-meta nil)
 (setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
+(setq mac-command-modifier 'meta)      ; cannot use <cmd>+h to hide!!!
 (setq mac-option-modifier nil)
 
 (provide 'macosx)
