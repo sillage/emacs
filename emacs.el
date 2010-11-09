@@ -19,6 +19,7 @@
 ;; Add location of your configuration files
 (add-to-list 'load-path "~/.emacs.d" 'append)
 
+(require 'macosx)
 (require 'my-autoload)
 (require 'my-c-mode)
 (require 'my-elisp)
@@ -681,23 +682,6 @@ Recognized extensions: .c, .cc or .cpp"
 (setq locale-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-
-
-;; Encoding for Terminal.app on OS X
-;; Found at http://www.emacswiki.org/emacs/EmacsForMacOS#toc22
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-
-
-;; Option key is meta key on OS X
-;; Found at http://www.emacswiki.org/emacs/MetaKeyProblems#toc15
-;; cannot use <cmd>+h to hide!!!
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
-
 
 ;; Tiger Compiler
 (autoload 'tiger-mode "tiger" "Load tiger-mode" t)
