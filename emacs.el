@@ -473,16 +473,10 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key [(control c) (c)] 'recompile)
 (global-set-key [(control c) (e)] 'next-error)
 (global-set-key [(control tab)] 'other-window) ; Ctrl-Tab = Next buffer
-(global-set-key
- [C-S-iso-lefttab]
- '(lambda () (interactive)
-    (other-window -1)))             ; Ctrl-Shift-Tab = Previous buffer
-(global-set-key
- [(control delete)]
- 'kill-word)                            ; kill word forward
-(global-set-key
- [(meta ~)]
- 'ruby-command)                         ; run ruby command
+(global-set-key [C-S-iso-lefttab]
+ '(lambda () (interactive) (other-window -1))) ; Ctrl-Shift-Tab = Previous buffer
+(global-set-key [(control delete)] 'kill-word) ; kill word forward
+(global-set-key [(meta ~)] 'ruby-command)      ; run ruby command
 
 
 ;; COLORS
@@ -638,8 +632,8 @@ Recognized extensions: .c, .cc or .cpp"
 (add-to-list 'compilation-error-regexp-alist
              '("^\\(FAIL\\|XPASS\\): \\(.*\\)$" 2 () () 2 2))
 
-(require 'flymake)
-(add-hook 'find-file-hook 'flymake-find-file-hook)
+;; (require 'flymake)
+;; (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ;; ;; Xrefactory configuration part ;;
 ;; ;; some Xrefactory defaults can be set here
