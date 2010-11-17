@@ -519,6 +519,10 @@ Recognized extensions: .c, .cc or .cpp"
 (c-add-style "epita" epita-style)
 ;; Use `EPITA' Coding Style by default.
 (setq c-default-style "epita")
+;; (add-to-list 'c-default-style '(c-mode . "epita"))
+;; (add-to-list 'c-default-style '(c++-mode . "epita"))
+;; (add-to-list 'c-default-style '(java-mode . "epita"))
+;; (add-to-list 'c-default-style '(awk-mode . "epita"))
 
 ;; ;; Indent and format C program source using GNU `indent' program.
 ;; (defun c-reformat-buffer()
