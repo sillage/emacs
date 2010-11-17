@@ -199,15 +199,11 @@ Recognized extensions: .c, .cc or .cpp"
         (indent-region (rbegin) (rend)))
     (progn
       (beginning-of-line)
-
       (setq begin (point))
-
       (insert b "{\n")
       (end-of-line)
       (insert "\n}" a)
-
       (indent-region begin (point))
-
       (line-move -1)
       (end-of-line))))
 
@@ -236,7 +232,7 @@ Recognized extensions: .c, .cc or .cpp"
   (c-indent-line))
 
 
-;; OPTIONS
+;;; OPTIONS
 (setq inhibit-startup-screen t)     ; don't show the GNU splash screen
 (setq frame-title-format "%b")      ; titlebar shows buffer's name
 (global-font-lock-mode 1)           ; syntax highlighting
@@ -274,7 +270,7 @@ Recognized extensions: .c, .cc or .cpp"
 (show-paren-mode 1)                 ; match parenthesis
 (setq-default indent-tabs-mode nil) ; nil == don't use fucking tabs to indent
 
-;; HOOKS
+;;; HOOKS
 
 ;; Delete trailing whitespaces on save
 ;; Warning: do not use it with Gnus, signature fail.
@@ -335,18 +331,23 @@ Recognized extensions: .c, .cc or .cpp"
 (add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . change-log-mode))
 
 
-;; ido --- interactively do things
+;;; ido --- interactively do things
 (defconst has-ido (>= emacs-major-version 22))
 
-(when (featurep 'ido)
-  (ido-mode 1)
+(when (ido-mode 1)
   (ido-everywhere 1)
   ;; tab means tab, i.e. complete. Not "open this file", stupid.
   (setq ido-confirm-unique-completion t)
   ;; If the file doesn't exist, do try to invent one from a transplanar
   ;; directory. I just want a new file.
   (setq ido-auto-merge-work-directories-length -1)
+  ;; If buffer name doesn't exist, create one.
+  (setq ido-create-new-buffer 'always)
   ;; Don't switch to GDB-mode buffers
+  (add-to-list 'ido-ignore-buffers "\\`\\*locals of.*\\*\\'")
+  (add-to-list 'ido-ignore-buffers "\\`\\*gud\\*\\'")
+  (add-to-list 'ido-ignore-buffers "\\`\\*stack frames of.*\\*\\'")
+  (add-to-list 'ido-ignore-buffers "\\`\\*breakpoints of.*\\*\\'")
   (add-to-list 'ido-ignore-buffers "locals"))
 
 
@@ -363,7 +364,7 @@ Recognized extensions: .c, .cc or .cpp"
 (setq user-mail-address "email@address") ; set my email address
 
 
-;; BINDINGS
+;;; BINDINGS
 
 ;; BINDINGS :: windows
 (global-unset-key [(control s)])
@@ -479,7 +480,7 @@ Recognized extensions: .c, .cc or .cpp"
 (global-set-key [(meta ~)] 'ruby-command)      ; run ruby command
 
 
-;; COLORS
+;;; COLORS
 (defun configure-frame ()
   (set-background-color "black")
   (set-foreground-color "white")
@@ -499,7 +500,7 @@ Recognized extensions: .c, .cc or .cpp"
   'comment-region)                      ; lisp comment
 
 
-;; C / C++ mode
+;;; C / C++ mode
 (require 'cc-mode)
 
 ;; `EPITA' Coding Style.
@@ -589,15 +590,6 @@ Recognized extensions: .c, .cc or .cpp"
 
 
 
-(when (featurep 'ido)
-  (custom-set-variables
-   '(ido-auto-merge-work-directories-length -1)
-   '(ido-confirm-unique-completion t)
-   '(ido-create-new-buffer (quote always))
-   '(ido-everywhere t)
-   '(ido-ignore-buffers (quote ("\\`\\*breakpoints of.*\\*\\'" "\\`\\*stack frames of.*\\*\\'" "\\`\\*gud\\*\\'" "\\`\\*locals of.*\\*\\'" "\\` ")))
-   '(ido-mode (quote both) nil (ido))))
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -605,12 +597,6 @@ Recognized extensions: .c, .cc or .cpp"
  ;; If there is more than one, they won't work right.
  '(after-save-hook (quote (executable-make-buffer-file-executable-if-script-p)))
  '(gdb-max-frames 1024)
- '(ido-auto-merge-work-directories-length -1)
- '(ido-confirm-unique-completion t)
- '(ido-create-new-buffer (quote always))
- '(ido-everywhere t)
- '(ido-ignore-buffers (quote ("\\`\\*breakpoints of.*\\*\\'" "\\`\\*stack frames of.*\\*\\'" "\\`\\*gud\\*\\'" "\\`\\*locals of.*\\*\\'" "\\` ")))
- '(ido-mode (quote both) nil (ido))
  '(python-indent 2)                     ; indentation python
  '(require-final-newline t) ; Whether to add a newline automatically at the end of the file.
  '(speedbar-frame-parameters (quote ((minibuffer . t) (width . 20) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0)))))
