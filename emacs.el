@@ -668,7 +668,7 @@ Recognized extensions: .c, .cc or .cpp"
 (add-to-list 'auto-mode-alist '("\\.ti[gh]$" . tiger-mode))
 
 
-;; Tuareg mode 2.0.2 for Caml code
+;; Tuareg-mode for Caml code
 (add-to-list 'auto-mode-alist '("\\.ml[iylp]?" . tuareg-mode))
 (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
 (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
