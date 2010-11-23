@@ -49,11 +49,6 @@ the Terminal version easily) (I dislike
      the instructions (basically put the configuration files in your
      `Application Data` directory).
 
-If you find yourself missing some autoloads after an update (which
-should manifest itself as "void function: foobar" errors) try `M-x
-regen-autoloads`. After some updates an `M-x recompile-init` will be
-necessary; this should be noted in the commit messages.
-
 ## Test ##
 
 This configuration is used almost daily under Mac OS X, frequently
