@@ -37,7 +37,7 @@ configuration.
 3. Copy configuration files:
 
     * On Unix-like systems, you can simply link the directory with `ln
-      -s ~/{emacs_dir} ~/.emacs.d`.
+      -s <extracted-dir> ~/.emacs.d`.
 
     * On Windows, search for the section **3.5 Where do I put my init
       file?** in [GNU Emacs FAQ For MS Windows][emacsfaqwin], and
