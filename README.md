@@ -31,7 +31,10 @@ and/or [MacPorts][macports] (to update the Terminal version easily).
 I dislike [Aquamacs][aquamacs].  Windows users can get it directly
 [from GNU][emacswin].
 
-2. Copy configuration files:
+2. Download the latest [tarball][tarball] or [zipball][zipball] of my
+configuration.
+
+3. Copy configuration files:
 
     * On Unix-like systems, you can simply link the directory with `ln
       -s ~/{emacs_dir} ~/.emacs.d`.
@@ -68,6 +71,8 @@ specified.  See the file COPYING for details.
 [macports]: http://www.macports.org/
 [aquamacs]: http://aquamacs.org/
 [emacswin]: http://ftp.gnu.org/pub/gnu/emacs/windows/
+[tarball]: https://github.com/sillage/emacs/tarball/master
+[zipball]: https://github.com/sillage/emacs/zipball/master
 [emacsfaqwin]: http://www.gnu.org/software/emacs/windows/
 [archlinux]: http://www.archlinux.org/
 [fedora]: http://fedoraproject.org/
