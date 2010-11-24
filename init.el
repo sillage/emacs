@@ -1,5 +1,13 @@
-;;; emacs.el --- My Emacs config
-
+;;; init.el --- Where all the magic begins
+;;
+;; This is the first thing to get loaded.
+;;
+;;
+;; "Emacs outshines all other editing software in approximately the
+;; same way that the noonday sun does the stars. It is not just bigger
+;; and brighter; it simply makes everything else vanish."
+;; -Neal Stephenson, "In the Beginning was the Command Line"
+;;
 ;;; Commentary:
 ;; Based on Quentin Hocquet <mefyl at lrde dot epita dot fr> configuration
 ;; > Based on Nicolas Despres <despre_n at lrde dot epita dot fr> configuration
@@ -50,7 +58,7 @@
 (defun reload ()
   "Reload configuration file."
   (interactive)
-  (load-file "~/.emacs"))
+  (may-load "~/.emacs.d/init.el"))
 
 ;; Compilation
 (defvar cpu-number 1
@@ -693,4 +701,4 @@ Recognized extensions: .c, .cc or .cpp"
   (set-frame-height (selected-frame) 42) ; because 42.
   (set-frame-width (selected-frame) 80))
 
-;;; emacs.el ends here
+;;; init.el ends here
