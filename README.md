@@ -32,7 +32,7 @@ I dislike [Aquamacs][aquamacs].  Windows users can get it directly
 [from GNU][emacswin].
 
 2. Download the latest [tarball][tarball] or [zipball][zipball] of my
-configuration.
+configuration and extract it.
 
 3. Copy configuration files:
 
