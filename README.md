@@ -33,21 +33,21 @@ Linux. For Mac OS X, use a [Universal
 Binary](http://emacsformacosx.com/) (recommended) or [Carbon
 Emacs](http://homepage.mac.com/zenitani/emacs-e.html) (a little
 obsolete now) and/or [MacPorts](http://www.macports.org/) (to update
-the Terminal version easily) (I dislike
-[Aquamacs](http://aquamacs.org/)).  Windows users can get it directly
+the Terminal version easily).  I dislike
+[Aquamacs](http://aquamacs.org/).  Windows users can get it directly
 [from GNU](http://ftp.gnu.org/pub/gnu/emacs/windows/).
 
 2. Copy configuration files:
 
-   * On Unix-like systems, you can link the directory with `ln -s
-     ~/{emacs_dir} ~/.emacs.d` and the init file with `ln -s
-     ~/{emacs.el_file} ~/.emacs`.
+    * On Unix-like systems, you can link the directory with `ln -s
+      ~/{emacs_dir} ~/.emacs.d` and the init file with `ln -s
+      ~/{emacs.el_file} ~/.emacs`.
 
-   * On Windows, search for the section **3.5 Where do I put my init
-     file?** in [GNU Emacs FAQ For MS
-     Windows](http://www.gnu.org/software/emacs/windows/), and follow
-     the instructions (basically put the configuration files in your
-     `Application Data` directory).
+    * On Windows, search for the section **3.5 Where do I put my init
+      file?** in [GNU Emacs FAQ For MS
+      Windows](http://www.gnu.org/software/emacs/windows/), and follow
+      the instructions (basically put the configuration files in your
+      `Application Data` directory).
 
 ## Test ##
 
@@ -56,7 +56,7 @@ under Linux ([Archlinux](http://www.archlinux.org/),
 [Fedora](http://fedoraproject.org/) and
 [Ubuntu](http://www.ubuntu.com/)), and occasionally under
 [FreeBSD](http://www.freebsd.org/) and Windows, for general text
-editing, and for programming. In case of problems, running the last
+editing, and for programming.  In case of problems, running the last
 version of everything usually helps.
 
 ## COPYING ##
