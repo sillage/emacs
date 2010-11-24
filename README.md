@@ -59,8 +59,8 @@ Files are licensed under the same license as Emacs unless otherwise
 specified.  See the file COPYING for details.
 
 
-[mefylconf]: https://github.com/downloads/sillage/emacs/emacs-conf.tar.bz2
-[mefylslides]: https://github.com/downloads/sillage/emacs/emacs-conf.pdf
+[mefylconf]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.tar.bz2
+[mefylslides]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.pdf
 [emacswiki]: http://www.emacswiki.org/
 [emacsman]: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html
 [elispintro]: http://www.gnu.org/software/emacs/emacs-lisp-intro/html_node/index.html
