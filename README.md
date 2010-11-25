@@ -31,13 +31,13 @@ and/or [MacPorts][macports] (to update the Terminal version easily).
 I dislike [Aquamacs][aquamacs].  Windows users can get it directly
 [from GNU][emacswin].
 
-2. Download the latest [tarball][tarball] or [zipball][zipball] of my
-configuration and extract it.
+2. Download and extract the latest [tarball][tarball] or
+[zipball][zipball] of my configuration.
 
 3. Copy configuration files:
 
-    * On Unix-like systems, you can simply link the directory with `ln
-      -s <extracted-dir> ~/.emacs.d`.
+    * On Unix-like systems, you can simply link the directory with the
+      command `ln -s <extracted-dir> ~/.emacs.d`.
 
     * On Windows, search for the section **3.5 Where do I put my init
       file?** in [GNU Emacs FAQ For MS Windows][emacsfaqwin], and
