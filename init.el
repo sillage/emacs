@@ -701,4 +701,10 @@ Recognized extensions: .c, .cc or .cpp"
   (set-frame-height (selected-frame) 42) ; because 42.
   (set-frame-width (selected-frame) 80))
 
+;;; auto-complete
+(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
+(ac-config-default)
+
 ;;; init.el ends here
