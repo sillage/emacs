@@ -2,7 +2,7 @@
 
 This is my configuration for _GNU Emacs_.  It is useful for any EPITA
 student and anyone who wants to have an efficient emacs config to code
-in C, C++, Java and even [OCaml][caml].
+in C, C++, Java and even [OCaml][].
 
 This configuration started in November 2010, derived from
 [mefyl's configuration][mefylconf].  Mefyl is a former ACU 2008, he
@@ -28,12 +28,12 @@ Some interesting places to learn more about Emacs:
 1. Grab GNU Emacs (23.* version!), use your package manager for
 Linux. For Mac OS X, use a [Universal Binary][emacsformacosx]
 (recommended) or [Carbon Emacs][carbonemacs] (a little obsolete now)
-and/or [MacPorts][macports] (to update the Terminal version easily).
-I dislike [Aquamacs][aquamacs].  Windows users can get it directly
+and/or [MacPorts][] (to update the Terminal version easily).  I
+dislike [Aquamacs][].  Windows users can get it directly
 [from GNU][emacswin].
 
-2. Download and extract the latest [tarball][tarball] or
-[zipball][zipball] of my configuration.
+2. Download and extract the latest [tarball][] or [zipball][] of my
+configuration.
 
 3. Copy configuration files:
 
@@ -49,10 +49,10 @@ I dislike [Aquamacs][aquamacs].  Windows users can get it directly
 ## Test ##
 
 This configuration is used almost daily under Mac OS X, frequently
-under Linux ([Archlinux][archlinux], [Fedora][fedora] and
-[Ubuntu][ubuntu]), and occasionally under [FreeBSD][freebsd] and
-Windows, for general text editing, and for programming.  In case of
-problems, running the last version of everything usually helps.
+under Linux ([Arch Linux][], [Fedora][] and [Ubuntu][]), and
+occasionally under [FreeBSD][] and Windows, for general text editing,
+and for programming.  In case of problems, running the last version of
+everything usually helps.
 
 ## COPYING ##
 
@@ -60,23 +60,23 @@ Files are licensed under the same license as Emacs unless otherwise
 specified.  See the file COPYING for details.
 
 
-[caml]: http://caml.inria.fr/
-[mefylconf]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.tar.bz2
-[mefylslides]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.pdf
-[emacswiki]: http://www.emacswiki.org/
-[emacsman]: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html
-[elispintro]: http://www.gnu.org/software/emacs/emacs-lisp-intro/html_node/index.html
-[elispman]: http://www.gnu.org/software/emacs/manual/html_node/elisp/index.html
-[otherman]: http://www.gnu.org/software/emacs/manual/index.html
-[emacsformacosx]: http://emacsformacosx.com/
-[carbonemacs]: http://homepage.mac.com/zenitani/emacs-e.html
-[macports]: http://www.macports.org/
-[aquamacs]: http://aquamacs.org/
-[emacswin]: http://ftp.gnu.org/pub/gnu/emacs/windows/
-[tarball]: https://github.com/sillage/emacs/tarball/master
-[zipball]: https://github.com/sillage/emacs/zipball/master
-[emacsfaqwin]: http://www.gnu.org/software/emacs/windows/
-[archlinux]: http://www.archlinux.org/
-[fedora]: http://fedoraproject.org/
-[ubuntu]: http://www.ubuntu.com/
-[freebsd]: http://www.freebsd.org/
+[OCaml]: http://caml.inria.fr/index.en.html "The Caml language: Home"
+[mefylconf]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.tar.bz2 "Mefyl's configuration files"
+[mefylslides]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.pdf "Mefyl's slides"
+[emacswiki]: http://www.emacswiki.org/ "Emacs Wiki"
+[emacsman]: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html "GNU Emacs manual"
+[elispintro]: http://www.gnu.org/software/emacs/emacs-lisp-intro/html_node/index.html "An Introduction to Programming in Emacs Lisp"
+[elispman]: http://www.gnu.org/software/emacs/manual/html_node/elisp/index.html "Emacs Lisp Reference Manual"
+[otherman]: http://www.gnu.org/software/emacs/manual/index.html "Other Emacs manuals"
+[emacsformacosx]: http://emacsformacosx.com/ "GNU Emacs For Mac OS X"
+[carbonemacs]: http://homepage.mac.com/zenitani/emacs-e.html "Carbon Emacs Package"
+[MacPorts]: http://www.macports.org/ "The MacPorts Project Official Homepage"
+[Aquamacs]: http://aquamacs.org/ "Aquamacs"
+[emacswin]: http://ftp.gnu.org/pub/gnu/emacs/windows/ "GNU Emacs FTP"
+[tarball]: https://github.com/sillage/emacs/tarball/master "latest tarball"
+[zipball]: https://github.com/sillage/emacs/zipball/master "latest zipball"
+[emacsfaqwin]: http://www.gnu.org/software/emacs/windows/ "GNU Emacs FAQ For MS Windows"
+[Arch Linux]: http://www.archlinux.org/ "Arch Linux"
+[Fedora]: http://fedoraproject.org/ "Fedora"
+[Ubuntu]: http://www.ubuntu.com/ "Ubuntu"
+[FreeBSD]: http://www.freebsd.org/ "FreeBSD"
