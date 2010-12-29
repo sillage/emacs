@@ -1,3 +1,7 @@
+# -*- mode: snippet -*-
 #name : namespace ...
 # --
-namespace 
+namespace $1
+{
+  $0
+} // namespace $1
