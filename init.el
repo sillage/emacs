@@ -720,4 +720,15 @@ Recognized extensions: .c, .cc or .cpp"
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
 
+;;; Markdown
+(autoload 'markdown-mode "markdown-mode.el"
+  "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+      (append '(("\\.text" . markdown-mode)
+                ("\\.mdwn" . markdown-mode)
+                ("\\.md" . markdown-mode)
+                ("\\.mdt" . markdown-mode)
+                ("\\.markdown" . markdown-mode))
+              auto-mode-alist))
+
 ;;; init.el ends here
