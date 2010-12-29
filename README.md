@@ -1,12 +1,13 @@
 # GNU Emacs Configuration #
 
-This is my configuration for _GNU Emacs_.
+This is my configuration for _GNU Emacs_.  It is useful for any EPITA
+student and anyone who wants to have an efficient emacs config to code
+in C, C++, Java and even [OCaml][caml].
 
-This configuration started in November 2010, derived from [mefyl's
-configuration][mefylconf].
-
-Mefyl gave an awesome lecture at EPITA in October 5, 2009. Here are
-the [slides][mefylslides].
+This configuration started in November 2010, derived from
+[mefyl's configuration][mefylconf].  Mefyl is a former ACU 2008, he
+gave us an awesome lecture at EPITA on October 5, 2009.  Here are the
+[slides][mefylslides].
 
 ## Resources for Emacs ##
 
@@ -59,6 +60,7 @@ Files are licensed under the same license as Emacs unless otherwise
 specified.  See the file COPYING for details.
 
 
+[caml]: http://caml.inria.fr/
 [mefylconf]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.tar.bz2
 [mefylslides]: https://github.com/downloads/sillage/emacs/mefyl-emacs-conf.pdf
 [emacswiki]: http://www.emacswiki.org/
