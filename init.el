@@ -566,42 +566,6 @@ Recognized extensions: .c, .cc or .cpp"
 ;; (desktop-load-default)
 ;; (desktop-read)
 
-;; mmm mode
-;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-mode/")
-;; (require 'mmm-mode)
-;; (setq mmm-global-mode 'maybe)
-
-;; (defun foo ()
-;;   (when (looking-back "^[ \t]*")
-;;     (beginning-of-line)))
-
-;; (mmm-add-classes
-;;  '((cc-html
-;;     :submode html-mode
-;;     :face mmm-code-submode-face
-;;     :front "\\('@\\|'@xml\\)\n?"
-;;     :back "@'"
-;;     :back-offset (foo))))
-
-
-;; (mmm-add-classes
-;;  '((ml-ext
-;;     :submode text-mode
-;;     :face mmm-code-submode-face
-;;     :front "<:\\w*<"
-;;     :back ">>"
-;;     :back-offset (foo))))
-
-
-;; (mmm-add-mode-ext-class 'c++-mode () 'cc-html)
-;; (mmm-add-mode-ext-class 'tuareg-mode () 'ml-ext)
-
-;; (setq mmm-submode-decoration-level 1)
-
-;; (set-face-background 'mmm-default-submode-face "gray16")
-
-
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
