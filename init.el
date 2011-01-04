@@ -560,12 +560,6 @@ Recognized extensions: .c, .cc or .cpp"
   (when (eq (car args) ?)
     (setcar args ?\n)))
 
-
-
-;; Sessions
-;; (desktop-load-default)
-;; (desktop-read)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
