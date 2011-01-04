@@ -695,14 +695,6 @@ Recognized extensions: .c, .cc or .cpp"
                 ("\\.cmake\\'" . cmake-mode))
               auto-mode-alist))
 
-
-(if (and (boundp 'window-system) window-system)
-    (when (string-match "XEmacs" emacs-version)
-      (if (not (and (boundp 'mule-x-win-initted) mule-x-win-initted))
-          (require 'sym-lock))
-      (require 'font-lock)))
-
-
 ;; Height and Width of frame
 (when (display-graphic-p)
   (set-frame-height (selected-frame) 42) ; because 42.
