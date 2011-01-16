@@ -9,20 +9,6 @@ This configuration started in November 2010, derived from
 gave us an awesome lecture at EPITA on October 5, 2009.  Here are the
 [slides][mefylslides].
 
-## Resources for Emacs ##
-
-Some interesting places to learn more about Emacs:
-
-* [Emacs wiki][emacswiki]
-
-* [GNU Emacs manual][emacsman]
-
-* [An Introduction to Programming in Emacs Lisp][elispintro]
-
-* [Emacs Lisp Reference Manual][elispman]
-
-* [Other Emacs manuals][otherman]
-
 ## Installation ##
 
 1. Grab GNU Emacs (23.* version!), use your package manager for
@@ -45,6 +31,20 @@ configuration.
       follow the instructions (basically put the configuration files
       in an `.emacs.d` directory in your own `Application Data`
       directory).
+
+## Resources for Emacs ##
+
+Some interesting places to learn more about Emacs:
+
+* [Emacs wiki][emacswiki]
+
+* [GNU Emacs manual][emacsman]
+
+* [An Introduction to Programming in Emacs Lisp][elispintro]
+
+* [Emacs Lisp Reference Manual][elispman]
+
+* [Other Emacs manuals][otherman]
 
 ## Test ##
 
