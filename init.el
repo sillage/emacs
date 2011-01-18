@@ -678,6 +678,9 @@ Recognized extensions: .c, .cc or .cpp"
                 ("\\.mdwn" . markdown-mode)
                 ("\\.md" . markdown-mode)
                 ("\\.mdt" . markdown-mode)
+                ("\\.mdown" . markdown-mode)
+                ("\\.mkdn" . markdown-mode)
+                ("\\.mkd" . markdown-mode)
                 ("\\.markdown" . markdown-mode))
               auto-mode-alist))
 
