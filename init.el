@@ -674,14 +674,14 @@ Recognized extensions: .c, .cc or .cpp"
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-      (append '(("\\.text" . markdown-mode)
-                ("\\.mdwn" . markdown-mode)
-                ("\\.md" . markdown-mode)
-                ("\\.mdt" . markdown-mode)
-                ("\\.mdown" . markdown-mode)
-                ("\\.mkdn" . markdown-mode)
-                ("\\.mkd" . markdown-mode)
-                ("\\.markdown" . markdown-mode))
+      (append '(("\\.text\\'" . markdown-mode)
+                ("\\.mdwn\\'" . markdown-mode)
+                ("\\.md\\'" . markdown-mode)
+                ("\\.mdt\\'" . markdown-mode)
+                ("\\.mdown\\'" . markdown-mode)
+                ("\\.mkdn\\'" . markdown-mode)
+                ("\\.mkd\\'" . markdown-mode)
+                ("\\.markdown\\'" . markdown-mode))
               auto-mode-alist))
 
 ;;; init.el ends here
