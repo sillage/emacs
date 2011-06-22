@@ -346,8 +346,8 @@ Recognized extensions: .c, .cc or .cpp"
   (ido-everywhere 1)
   ;; tab means tab, i.e. complete. Not "open this file", stupid.
   (setq ido-confirm-unique-completion t)
-  ;; If the file doesn't exist, do try to invent one from a transplanar
-  ;; directory. I just want a new file.
+  ;; If the file doesn't exist, do not try to invent one from a
+  ;; transplanar directory. I just want a new file.
   (setq ido-auto-merge-work-directories-length -1)
   ;; If buffer name doesn't exist, create one.
   (setq ido-create-new-buffer 'always)
@@ -556,9 +556,9 @@ Recognized extensions: .c, .cc or .cpp"
 (setq compilation-scroll-output t)
 
 ;; make C-Q RET insert a \n, not a ^M
-(defadvice insert-and-inherit (before ENCULAY activate)
-  (when (eq (car args) ?)
-    (setcar args ?\n)))
+;; (defadvice insert-and-inherit (before ENCULAY activate)
+;;   (when (eq (car args) ?)
+;;     (setcar args ?\n)))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
