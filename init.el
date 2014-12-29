@@ -25,7 +25,7 @@
 (may-load "~/.emacs.site")
 
 ;; Add location of your configuration files
-(add-to-list 'load-path "~/.emacs.d" 'append)
+(add-to-list 'load-path "~/.emacs.d/lisp" 'append)
 
 (require 'macosx)
 (require 'my-autoload)
@@ -531,6 +531,7 @@ Recognized extensions: .c, .cc or .cpp"
 ;; (add-to-list 'c-default-style '(c++-mode . "epita"))
 ;; (add-to-list 'c-default-style '(java-mode . "epita"))
 ;; (add-to-list 'c-default-style '(awk-mode . "epita"))
+(setq js-indent-level 2)                ; JavaScript indentation
 
 ;; ;; Indent and format C program source using GNU `indent' program.
 ;; (defun c-reformat-buffer()
@@ -659,10 +660,10 @@ Recognized extensions: .c, .cc or .cpp"
   (set-frame-width (selected-frame) 80))
 
 ;;; auto-complete
-(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
-(ac-config-default)
+;(add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
+;(require 'auto-complete-config)
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
+;(ac-config-default)
 
 ;;; yasnippet
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
