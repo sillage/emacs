@@ -685,4 +685,9 @@ Recognized extensions: .c, .cc or .cpp"
                 ("\\.markdown\\'" . markdown-mode))
               auto-mode-alist))
 
+;; VisualBasicMode
+(autoload 'visual-basic-mode "visual-basic-mode" "Visual Basic mode." t)
+(setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|cls\\)$" .
+                                 visual-basic-mode)) auto-mode-alist))
+
 ;;; init.el ends here
